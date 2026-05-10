@@ -1,0 +1,17 @@
+services:
+  portfolio-site:
+    # Build uputa kaže Dockeru da potraži Dockerfile u mapi portfolio-site
+    build:
+      context: ./portfolio-site
+      dockerfile: Dockerfile
+    # Mapiramo port 8080 na našem računalu na port 80 unutar kontejnera
+    ports:
+      - "8080:80"
+      - "443:443"
+      - "443:443/udp"
+    # Montiramo lokalni folder u kontejner kako bi se promjene u kodu odmah vidjele (Hot Reload)
+    volumes:
+      - ./portfolio-site:/app
+    environment:
+      # Isključujemo HTTPS za lokalni razvoj na portu 8080 radi jednostavnosti za početak
+      SERVER_NAME: :80 # benjamin-babic.from.hr
