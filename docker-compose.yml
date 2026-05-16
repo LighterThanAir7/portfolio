@@ -1,17 +1,51 @@
 services:
+  # Glavni portfolio site
   portfolio-site:
-    # Build uputa kaže Dockeru da potraži Dockerfile u mapi portfolio-site
     build:
       context: ./portfolio-site
       dockerfile: Dockerfile
-    # Mapiramo port 8080 na našem računalu na port 80 unutar kontejnera
     ports:
       - "8080:80"
       - "443:443"
       - "443:443/udp"
-    # Montiramo lokalni folder u kontejner kako bi se promjene u kodu odmah vidjele (Hot Reload)
     volumes:
       - ./portfolio-site:/app
     environment:
-      # Isključujemo HTTPS za lokalni razvoj na portu 8080 radi jednostavnosti za početak
-      SERVER_NAME: :80 # benjamin-babic.from.hr
+      SERVER_NAME: :80
+
+  # Eko-Kos projekt (čisti, statični web server)
+  eko-kos-site:
+    image: caddy:alpine
+    ports:
+      - "8081:80"
+    volumes:
+      - ./eko-kos/dist:/usr/share/caddy
+
+    # NEMA POTREBE ZA Caddyfile-om: Ako koristiš službeni caddy:alpine image za eko-kos-site,
+    # on ima predefiniranu postavku da sve što baciš u /usr/share/caddy automatski servira na portu 80 tog kontejnera (što je izvana tvoj 8081). Ne moraš pisati nikakav konfiguracijski file.
+
+  # Verzija 1: Čisti HTML/CSS/JS (Statično)
+  sounwave-v1:
+    image: caddy:alpine
+    ports:
+      - "8082:80"
+    volumes:
+      - ./soundwave/v1/:/usr/share/caddy
+
+  # Verzija 2: PHP varijanta (Koristimo FrankenPHP)
+  soundwave-v2:
+    image: dunglas/frankenphp:alpine # Alpine verzija je lagana i brza
+    ports:
+      - "8083:80"
+    volumes:
+      - ./soundwave/v2:/app # FrankenPHP po defaultu servira iz /app foldera
+    environment:
+      SERVER_NAME: :80
+
+  # Verzija 3: React App (Statični produkcijski build)
+  soundwave-v3:
+    image: caddy:alpine
+    ports:
+      - "8084:80"
+    volumes:
+      - ./soundwave/v3/dist:/usr/share/caddy

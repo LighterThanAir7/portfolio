@@ -1,0 +1,15 @@
+[submodule "eko-kos"]
+	path = eko-kos
+	url = https://github.com/LighterThanAir7/Eko-Kos
+[submodule "soundwave/v1"]
+	path = soundwave/v1
+	url = https://github.com/LighterThanAir7/SoundWave
+	branch = v1
+[submodule "soundwave/v2"]
+	path = soundwave/v2
+	url = https://github.com/LighterThanAir7/SoundWave
+	branch = v2
+[submodule "soundwave/v3"]
+	path = soundwave/v3
+	url = https://github.com/LighterThanAir7/SoundWave
+	branch = v3
