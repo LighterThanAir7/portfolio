@@ -34,13 +34,30 @@ services:
 
   # Verzija 2: PHP varijanta (Koristimo FrankenPHP)
   soundwave-v2:
-    image: dunglas/frankenphp:alpine # Alpine verzija je lagana i brza
+    build:
+      context: ./soundwave/v2
+      dockerfile: Dockerfile
     ports:
       - "8083:80"
     volumes:
-      - ./soundwave/v2:/app # FrankenPHP po defaultu servira iz /app foldera
+      - ./soundwave/v2:/app/public # FrankenPHP po defaultu servira iz /app foldera
     environment:
       SERVER_NAME: :80
+
+  # Soundwave-v2 MySQL DB
+  soundwave-v2-db:
+    image: mariadb:10.4
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: soundwave_v2
+      MARIADB_USER: soundwave
+      MARIADB_PASSWORD: soundwave
+    volumes:
+      - soundwave-v2-db-data:/var/lib/mysql
+      # Automatski uvozi tvoj SQL dump pri prvom pokretanju baze:
+      - ./soundwave/v2/admin/db/soundwave_loc.sql:/docker-entrypoint-initdb.d/dump.sql
 
   # Verzija 3: React App (Statični produkcijski build)
   soundwave-v3:
@@ -49,3 +66,6 @@ services:
       - "8084:80"
     volumes:
       - ./soundwave/v3/dist:/usr/share/caddy
+
+volumes:
+  soundwave-v2-db-data:
