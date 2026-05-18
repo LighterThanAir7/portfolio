@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>High-Performance Tech Stack & CMS Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #09090b;
+      font-family: 'Zilla Slab', serif;
+      /* Subtle dark tech dot grid pattern background */
+      background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+    .accent-text {
+      color: hsl(160, 100%, 74.9%);
+    }
+    .accent-bg {
+      background-color: hsl(160, 100%, 74.9%);
+    }
+    .accent-border {
+      border-color: hsl(160, 100%, 74.9%);
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #09090b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: hsl(160, 100%, 74.9%);
+    }
+  </style>
+</head>
+<body class="text-gray-100 antialiased flex flex-col min-h-screen">
+
+  <div class="flex flex-1">
+    <aside class="w-64 bg-[#0e0e11]/90 backdrop-blur-md border-r border-gray-800/60 fixed h-screen top-0 left-0 overflow-y-auto hidden md:block select-none z-20">
+      <div class="p-6">
+        <h2 class="text-xl font-bold tracking-wider uppercase accent-text">Architecture</h2>
+        <p class="text-xs text-gray-400 mt-1">Hyper-Optimized Stack</p>
+      </div>
+      <nav class="px-4 pb-6 space-y-1">
+        <p class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-4 mb-2">Frontend Layer</p>
+        <button onclick="showDetails('astro')" class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-900 text-left transition-colors nav-btn" id="nav-astro">Astro</button>
+        <button onclick="showDetails('svelte')" class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-900 text-left transition-colors nav-btn" id="nav-svelte">Svelte</button>
+        
+        <p class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-6 mb-2">Runtime & Server</p>
+        <button onclick="showDetails('bun')" class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-900 text-left transition-colors nav-btn" id="nav-bun">Bun</button>
+        <button onclick="showDetails('caddy')" class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-900 text-left transition-colors nav-btn" id="nav-caddy">Caddy</button>
+        
+        <p class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-6 mb-2">Data Layer</p>
+        <button onclick="showDetails('prisma')" class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-900 text-left transition-colors nav-btn" id="nav-prisma">Prisma ORM</button>
+        <button onclick="showDetails('sqlite')" class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-900 text-left transition-colors nav-btn" id="nav-sqlite">SQLite</button>
+
+        <p class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-6 mb-2">Content Management</p>
+        <button onclick="showDetails('astro-collections')" class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-900 text-left transition-colors nav-btn" id="nav-astro-collections">Astro Collections</button>
+        <button onclick="showDetails('directus')" class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-900 text-left transition-colors nav-btn" id="nav-directus">Directus</button>
+        <button onclick="showDetails('tina-cms')" class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-900 text-left transition-colors nav-btn" id="nav-tina-cms">TinaCMS</button>
+        <button onclick="showDetails('payload-cms')" class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-900 text-left transition-colors nav-btn" id="nav-payload-cms">Payload CMS</button>
+        <button onclick="showDetails('wordpress')" class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-900 text-left transition-colors nav-btn" id="nav-wordpress">WordPress</button>
+      </nav>
+    </aside>
+
+    <div class="flex-1 md:ml-64 lg:grid lg:grid-cols-12 lg:gap-8 p-6 md:p-12">
+      
+      <main class="lg:col-span-7 space-y-12 max-w-2xl">
+        <header class="mb-10 pb-6 border-b border-gray-800/80">
+          <h1 class="text-4xl font-extrabold tracking-tight mb-2">Your Production Tech Stack</h1>
+          <p class="text-gray-400 text-lg">Select any tool layer below to isolate live technical execution links, structural facts, and architectural trade-offs within the inspector panel.</p>
+        </header>
+
+        <div class="space-y-4">
+          <h2 class="text-sm font-bold tracking-widest uppercase text-gray-500 px-1">1. Frontend Layer</h2>
+          
+          <div onclick="showDetails('astro')" id="card-astro" class="bg-[#111114]/80 backdrop-blur-sm p-5 rounded-xl border border-gray-800 cursor-pointer transition-all hover:border-gray-700/80 stack-card group">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="https://github.com/withastro.png" alt="Astro Logo" class="w-8 h-8 object-contain rounded bg-zinc-900 p-0.5">
+                <h3 class="text-xl font-bold text-white group-hover:text-[hsl(160,100%,74.9%)] transition-colors">Astro</h3>
+              </div>
+              <span class="px-2 py-0.5 rounded text-xs font-bold bg-gray-900 accent-text border accent-border">Zero-JS Default</span>
+            </div>
+          </div>
+
+          <div onclick="showDetails('svelte')" id="card-svelte" class="bg-[#111114]/80 backdrop-blur-sm p-5 rounded-xl border border-gray-800 cursor-pointer transition-all hover:border-gray-700/80 stack-card group">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="https://github.com/sveltejs.png" alt="Svelte Logo" class="w-8 h-8 object-contain rounded bg-zinc-900 p-0.5">
+                <h3 class="text-xl font-bold text-white group-hover:text-[hsl(160,100%,74.9%)] transition-colors">Svelte</h3>
+              </div>
+              <span class="px-2 py-0.5 rounded text-xs font-bold bg-gray-900 accent-text border accent-border">No Virtual DOM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h2 class="text-sm font-bold tracking-widest uppercase text-gray-500 px-1">2. Runtime & Server</h2>
+          
+          <div onclick="showDetails('bun')" id="card-bun" class="bg-[#111114]/80 backdrop-blur-sm p-5 rounded-xl border border-gray-800 cursor-pointer transition-all hover:border-gray-700/80 stack-card group">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="https://github.com/oven-sh.png" alt="Bun Logo" class="w-8 h-8 object-contain rounded bg-zinc-900 p-0.5">
+                <h3 class="text-xl font-bold text-white group-hover:text-[hsl(160,100%,74.9%)] transition-colors">Bun</h3>
+              </div>
+              <span class="px-2 py-0.5 rounded text-xs font-bold bg-gray-900 accent-text border accent-border">Native Zig Build</span>
+            </div>
+          </div>
+
+          <div onclick="showDetails('caddy')" id="card-caddy" class="bg-[#111114]/80 backdrop-blur-sm p-5 rounded-xl border border-gray-800 cursor-pointer transition-all hover:border-gray-700/80 stack-card group">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="https://github.com/caddyserver.png" alt="Caddy Logo" class="w-8 h-8 object-contain rounded bg-zinc-900 p-0.5">
+                <h3 class="text-xl font-bold text-white group-hover:text-[hsl(160,100%,74.9%)] transition-colors">Caddy</h3>
+              </div>
+              <span class="px-2 py-0.5 rounded text-xs font-bold bg-gray-900 accent-text border accent-border">Auto-TLS Proxy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h2 class="text-sm font-bold tracking-widest uppercase text-gray-500 px-1">3. Data Layer</h2>
+          
+          <div onclick="showDetails('prisma')" id="card-prisma" class="bg-[#111114]/80 backdrop-blur-sm p-5 rounded-xl border border-gray-800 cursor-pointer transition-all hover:border-gray-700/80 stack-card group">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="https://github.com/prisma.png" alt="Prisma Logo" class="w-8 h-8 object-contain rounded bg-zinc-900 p-0.5">
+                <h3 class="text-xl font-bold text-white group-hover:text-[hsl(160,100%,74.9%)] transition-colors">Prisma ORM</h3>
+              </div>
+              <span class="px-2 py-0.5 rounded text-xs font-bold bg-gray-900 accent-text border accent-border">Strict Type Safety</span>
+            </div>
+          </div>
+
+          <div onclick="showDetails('sqlite')" id="card-sqlite" class="bg-[#111114]/80 backdrop-blur-sm p-5 rounded-xl border border-gray-800 cursor-pointer transition-all hover:border-gray-700/80 stack-card group">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Sqlite-square-icon.svg/240px-Sqlite-square-icon.svg.png" alt="SQLite Logo" class="w-8 h-8 object-contain rounded bg-zinc-900 p-0.5">
+                <h3 class="text-xl font-bold text-white group-hover:text-[hsl(160,100%,74.9%)] transition-colors">SQLite</h3>
+              </div>
+              <span class="px-2 py-0.5 rounded text-xs font-bold bg-gray-900 accent-text border accent-border">Embedded Database</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h2 class="text-sm font-bold tracking-widest uppercase text-gray-500 px-1">4. Content Management (CMS)</h2>
+          
+          <div onclick="showDetails('astro-collections')" id="card-astro-collections" class="bg-[#111114]/80 backdrop-blur-sm p-5 rounded-xl border border-gray-800 cursor-pointer transition-all hover:border-gray-700/80 stack-card group">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="https://github.com/withastro.png" alt="Astro Collections Logo" class="w-8 h-8 object-contain rounded bg-zinc-900 p-0.5">
+                <h3 class="text-xl font-bold text-white group-hover:text-[hsl(160,100%,74.9%)] transition-colors">Astro Collections</h3>
+              </div>
+              <span class="px-2 py-0.5 rounded text-xs font-bold bg-gray-900 accent-text border accent-border">Git-Backed</span>
+            </div>
+          </div>
+
+          <div onclick="showDetails('directus')" id="card-directus" class="bg-[#111114]/80 backdrop-blur-sm p-5 rounded-xl border border-gray-800 cursor-pointer transition-all hover:border-gray-700/80 stack-card group">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="https://github.com/directus.png" alt="Directus Logo" class="w-8 h-8 object-contain rounded bg-zinc-900 p-0.5">
+                <h3 class="text-xl font-bold text-white group-hover:text-[hsl(160,100%,74.9%)] transition-colors">Directus</h3>
+              </div>
+              <span class="px-2 py-0.5 rounded text-xs font-bold bg-gray-900 accent-text border accent-border">SQLite Wrapper</span>
+            </div>
+          </div>
+
+          <div onclick="showDetails('tina-cms')" id="card-tina-cms" class="bg-[#111114]/80 backdrop-blur-sm p-5 rounded-xl border border-gray-800 cursor-pointer transition-all hover:border-gray-700/80 stack-card group">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="https://github.com/tinacms.png" alt="TinaCMS Logo" class="w-8 h-8 object-contain rounded bg-zinc-900 p-0.5">
+                <h3 class="text-xl font-bold text-white group-hover:text-[hsl(160,100%,74.9%)] transition-colors">TinaCMS</h3>
+              </div>
+              <span class="px-2 py-0.5 rounded text-xs font-bold bg-gray-900 accent-text border accent-border">Visual Context</span>
+            </div>
+          </div>
+
+          <div onclick="showDetails('payload-cms')" id="card-payload-cms" class="bg-[#111114]/80 backdrop-blur-sm p-5 rounded-xl border border-gray-800 cursor-pointer transition-all hover:border-gray-700/80 stack-card group">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="https://github.com/payloadcms.png" alt="Payload CMS Logo" class="w-8 h-8 object-contain rounded bg-zinc-900 p-0.5">
+                <h3 class="text-xl font-bold text-white group-hover:text-[hsl(160,100%,74.9%)] transition-colors">Payload CMS</h3>
+              </div>
+              <span class="px-2 py-0.5 rounded text-xs font-bold bg-gray-900 accent-text border accent-border">Code-First TS</span>
+            </div>
+          </div>
+
+          <div onclick="showDetails('wordpress')" id="card-wordpress" class="bg-[#111114]/80 backdrop-blur-sm p-5 rounded-xl border border-gray-800 cursor-pointer transition-all hover:border-gray-700/80 stack-card group">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/WordPress_blue_logo.svg/240px-WordPress_blue_logo.svg.png" alt="WordPress Logo" class="w-8 h-8 object-contain rounded bg-zinc-900 p-0.5">
+                <h3 class="text-xl font-bold text-white group-hover:text-[hsl(160,100%,74.9%)] transition-colors">WordPress</h3>
+              </div>
+              <span class="px-2 py-0.5 rounded text-xs font-bold bg-gray-900 text-gray-400 border border-gray-800">Monolithic CMS</span>
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+      <aside class="hidden lg:block lg:col-span-5 h-fit sticky top-12 border-l border-gray-800/60 pl-6 z-10">
+        <div class="bg-[#111114]/90 backdrop-blur-md p-6 rounded-xl border border-gray-800/80 min-h-[620px] flex flex-col justify-between">
+          <div id="inspector-content" class="text-sm text-gray-200">
+            </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <section class="border-t border-gray-800/80 bg-[#0b0b0e] md:ml-64 p-8 md:p-12 z-10">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-8">
+        <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2 mb-2">
+          <span class="w-2 h-2 rounded-full accent-bg animate-pulse"></span> Deep Architectural Performance Metrics
+        </h3>
+        <h2 class="text-3xl font-black text-white">Expanded Stack Efficiency Analysis</h2>
+        <p class="text-base text-gray-400 mt-1">Detailed structural breakdown tracking operational threshold levels and asset behavior models across your infrastructure.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="bg-[#111114]/60 p-5 rounded-xl border border-gray-800/80">
+          <div class="flex justify-between items-start mb-3">
+            <h4 class="text-base font-bold text-white">Client Framework Runlease</h4>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">0ms Base</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            By avoiding large, structural browser rendering libraries, the browser reads raw HTML structures directly. This eliminates javascript compilation parsing routines during initial paint events.
+          </p>
+        </div>
+
+        <div class="bg-[#111114]/60 p-5 rounded-xl border border-gray-800/80">
+          <div class="flex justify-between items-start mb-3">
+            <h4 class="text-base font-bold text-white">Network DB Handshake Lag</h4>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">In-Process</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Relational transactions operate inside your application shell directly. This avoids TCP handshake delays or connection pooling configurations found in standalone database networks.
+          </p>
+        </div>
+
+        <div class="bg-[#111114]/60 p-5 rounded-xl border border-gray-800/80">
+          <div class="flex justify-between items-start mb-3">
+            <h4 class="text-base font-bold text-white">Server Container Cold Starts</h4>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">&lt;8ms Execution</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            The low-level compiled runtime engine boots isolated routines almost instantly. This provides consistent, highly responsive compute power even when scaling under sudden server load shifts.
+          </p>
+        </div>
+
+        <div class="bg-[#111114]/60 p-5 rounded-xl border border-gray-800/80">
+          <div class="flex justify-between items-start mb-3">
+            <h4 class="text-base font-bold text-white">TLS Handshake Protocol</h4>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">100% Automated</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Edge requests receive transport security layer processing on the fly. The reverse proxy retains autonomous asset tracking configurations, eliminating runtime security oversights.
+          </p>
+        </div>
+
+        <div class="bg-[#111114]/60 p-5 rounded-xl border border-gray-800/80">
+          <div class="flex justify-between items-start mb-3">
+            <h4 class="text-base font-bold text-white">DOM Node Hydration</h4>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">Surgical Isolation</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Interactive visual blocks bind script processes independently. This prevents heavy, full-page client layout evaluations, protecting mobile device battery health and eliminating click stutter.
+          </p>
+        </div>
+
+        <div class="bg-[#111114]/60 p-5 rounded-xl border border-gray-800/80">
+          <div class="flex justify-between items-start mb-3">
+            <h4 class="text-base font-bold text-white">Local Bundling Compilation</h4>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">Native Assembly</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Asset packaging processes rely on memory efficient system logic. This removes the need for old, slow build chains, allowing source components to sync to running processes quickly.
+          </p>
+        </div>
+
+        <div class="bg-[#111114]/60 p-5 rounded-xl border border-gray-800/80">
+          <div class="flex justify-between items-start mb-3">
+            <h4 class="text-base font-bold text-white">Data Corruption Thresholds</h4>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">Atomic Bounds</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Write actions use atomic operational locks to safely update disk storage files. This structure safeguards database records even during sudden host system reboots or runtime power events.
+          </p>
+        </div>
+
+        <div class="bg-[#111114]/60 p-5 rounded-xl border border-gray-800/80">
+          <div class="flex justify-between items-start mb-3">
+            <h4 class="text-base font-bold text-white">Memory Leak Protection</h4>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">Deterministic</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Strict compilation layouts prevent orphan event loops in browser environments, maintaining stable interface resource footprints during extended operational sessions.
+          </p>
+        </div>
+
+        <div class="bg-[#111114]/60 p-5 rounded-xl border border-gray-800/80">
+          <div class="flex justify-between items-start mb-3">
+            <h4 class="text-base font-bold text-white">Edge Caching Compatibility</h4>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">Statically Pure</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Pre-built interface layers deploy directly to distributed cloud networks, serving global client web browsers with minimal processing overhead.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const stackData = {
+      astro: {
+        title: "Astro",
+        subtitle: "Universal Framework Architecture",
+        url: "https://astro.build",
+        tags: ["Zero-JS Default", "Islands Engine", "Server Static Output"],
+        desc: "Astro operates as the primary architectural foundation for your content delivery, compiling nested templates into <span class='accent-text font-semibold'>pure static HTML elements on the server</span> by default. It separates dynamic client logic through its isolated Islands structure, loading interactive interface elements <span class='underline decoration-[hsl(160,100%,74.9%)]'>only when they enter the active viewport</span>. This preserves rendering speeds and cuts down browser processing overhead.",
+        points: [
+          "Removes framework runtime scripts from text-heavy presentation pages.",
+          "Combines components from multiple UI frameworks into a single template layout seamlessly.",
+          "Includes automated asset handling tools for faster rendering pipelines."
+        ],
+        alternatives: "Monolithic layouts like <strong>React</strong> or <strong>Next.js</strong> force client environments to download large runtime scripts, adding processing delays and slowing down mobile devices.",
+        facts: [
+          "Eliminates initial hydration lag by delivering pre-compiled content strings.",
+          "Maintains strict, built-in validation rules for all source media items.",
+          "Ranks among the fastest modern frameworks for core web vitals and initial page loads."
+        ],
+        links: [
+          { text: "Astro Architecture Guide", url: "https://docs.astro.build/en/concepts/why-astro/" },
+          { text: "Islands Deep Dive", url: "https://docs.astro.build/en/concepts/islands/" },
+          { text: "Core Optimization Reference", url: "https://docs.astro.build/en/guides/images/" }
+        ]
+      },
+      svelte: {
+        title: "Svelte",
+        subtitle: "Compiled Ephemeral Reactive Interface",
+        url: "https://svelte.dev",
+        tags: ["No Virtual DOM", "Native Build Compiler", "Surgical DOM Updates"],
+        desc: "Svelte handles client side interactive interface elements without adding heavy script burdens. Unlike traditional options that run inside the browser, Svelte acts as an <span class='accent-text font-semibold'>ahead-of-time compiler that generates raw, framework-free vanilla JavaScript commands</span>. When variables adjust, the application updates the real DOM directly with high accuracy, saving device processing power.",
+        points: [
+          "Bypasses memory heavy virtual element mapping tasks completely.",
+          "Generates lightweight asset bundles for fast user interactions.",
+          "Includes built-in state transitions and animation primitives out of the box."
+        ],
+        alternatives: "Standard layouts like <strong>React</strong> or <strong>Vue</strong> require large framework engines to run in the browser, tracking layout changes through heavy virtual diffing processes.",
+        facts: [
+          "Compiles components down to isolated, target-specific DOM modification steps.",
+          "Maintains lightweight code footprints for faster script downloads over slow networks.",
+          "Protects client environments from layout calculation bottlenecks under high data load."
+        ],
+        links: [
+          { text: "Svelte Compiler Mechanics", url: "https://svelte.dev/docs/introduction" },
+          { text: "Reactivity Benchmarks", url: "https://svelte.dev/blog/runes" },
+          { text: "Bundle Performance Data", url: "https://svelte.dev/blog/frameworks-without-the-framework" }
+        ]
+      },
+      bun: {
+        title: "Bun",
+        subtitle: "Native System Runtime Toolset",
+        url: "https://bun.sh",
+        tags: ["Native Zig Build", "Unified Bundler Engine", "Instant Process Boots"],
+        desc: "Bun manages your server logic, background backend routines, and package installation pipelines. Developed using Zig to optimize core memory operations, it delivers a high speed runtime execution path that <span class='underline decoration-[hsl(160,100%,74.9%)]'>scales network performance far beyond standard JavaScript engines</span>. It interprets TypeScript files natively and replaces complex, multi-stage compilation setups.",
+        points: [
+          "Executes code with fast startup times, minimizing execution delays.",
+          "Consolidates package fetching, compiling, testing, and execution tasks.",
+          "Processes data streams efficiently for rapid backend communication."
+        ],
+        alternatives: "Traditional runtimes like <strong>Node.js</strong> run on older module code bases, requiring external tools and extra configuration files to process modern scripts.",
+        facts: [
+          "Replaces Node package execution toolsets with an integrated native processing binary.",
+          "Optimizes memory layout patterns using fine-grained control structures.",
+          "Features an integrated web API controller that handles massive connection streams smoothly."
+        ],
+        links: [
+          { text: "Bun Speed Matrix", url: "https://bun.sh/blog/bun-v1.0" },
+          { text: "Native Engine Architecture", url: "https://bun.sh/docs" },
+          { text: "HTTP Routing Benchmarks", url: "https://bun.sh/docs/api/http" }
+        ]
+      },
+      caddy: {
+        title: "Caddy",
+        subtitle: "Go-Powered Secure Reverse Proxy",
+        url: "https://caddyserver.com",
+        tags: ["Go Binary Build", "Automatic TLS Renew", "Low Footprint Route"],
+        desc: "Caddy operates as your primary web routing shield, directing incoming user traffic straight to your active backend processes. Developed with Go's robust networking libraries, it serves static files efficiently while <span class='accent-text font-semibold'>managing secure certificate upgrades automatically in the background</span>. Its clean configuration model prevents server script errors.",
+        points: [
+          "Generates security access layer profiles automatically using Let's Encrypt integration.",
+          "Replaces thousands of lines of messy proxy configurations with clean Caddyfile blocks.",
+          "Maintains data routing tasks reliably with stable memory footprints."
+        ],
+        alternatives: "Web server options like <strong>Nginx</strong> or <strong>Apache</strong> require manual setup tasks, custom renewal scripts, and standalone cron jobs, which can introduce security flaws.",
+        facts: [
+          "Features built-in defense tools to block automated script attacks safely.",
+          "Uses an integrated memory layout designed to prevent resource leaks under sustained load.",
+          "Allows you to modify active routing patterns on the fly without restarting server processes."
+        ],
+        links: [
+          { text: "Caddyfile Quickstart", url: "https://caddyserver.com/docs/caddyfile" },
+          { text: "Automatic HTTPS Spec", url: "https://caddyserver.com/docs/automatic-https" },
+          { text: "Proxy Optimization Profiles", url: "https://caddyserver.com/docs/modules/http.handlers.reverse_proxy" }
+        ]
+      },
+      prisma: {
+        title: "Prisma ORM",
+        subtitle: "Type-Safe Relational Visual Mapping",
+        url: "https://www.prisma.io",
+        tags: ["Declarative Schema", "Type-Safe Queries", "Auto-Migrations Engine"],
+        desc: "Prisma manages your structural interface data mapping, translating app interactions into highly predictable SQL operations. By utilizing a single declarative schema configuration, it generates <span class='accent-text font-semibold'>deterministic TypeScript types for your environment</span>, catching object manipulation inconsistencies well before execution phases.",
+        points: [
+          "Automates database schema adjustment sequences reliably based on code changes.",
+          "Provides complete autocomplete help directly inside code editing viewports.",
+          "Simplifies table relationship maps within standard declarative code structures."
+        ],
+        alternatives: "Using unvetted raw SQL queries or dynamic database connectors can lead to hidden database errors, making code maintenance difficult over time.",
+        facts: [
+          "Prevents incorrect database data inputs during the compilation stage.",
+          "Speeds up system feature development by providing automatic code generation tools.",
+          "Validates data object shapes carefully before writing updates to the disk."
+        ],
+        links: [
+          { text: "Prisma Schema Standard", url: "https://www.prisma.io/docs/orm/prisma-schema/overview" },
+          { text: "TypeScript Type Extraction", url: "https://www.prisma.io/docs/orm/prisma-client/type-safety" },
+          { text: "Migration Control Sequences", url: "https://www.prisma.io/docs/orm/prisma-migrate/overview" }
+        ]
+      },
+      sqlite: {
+        title: "SQLite",
+        subtitle: "Embedded Local Transaction Core",
+        url: "https://www.sqlite.org",
+        tags: ["Inline Disk Storage", "Zero Network Delay", "Single Portable Asset"],
+        desc: "SQLite runs your database operations directly inside your application process memory, storing information in a <span class='underline decoration-[hsl(160,100%,74.9%)]'>highly secure, local file block</span>. This avoids network connection delays, providing microsecond response times and eliminating separate server maintenance costs.",
+        points: [
+          "Eliminates network latency by bypassing external TCP port lookups entirely.",
+          "Consolidates database records into a single, highly portable file for easy moves.",
+          "Provides fast database read times for content heavy apps."
+        ],
+        alternatives: "Separate database setups like <strong>PostgreSQL</strong> or <strong>MySQL</strong> introduce network connection delays and container cost overhead, which can complicate single server deployments.",
+        facts: [
+          "Protects data updates from corruption during sudden system crashes using atomic write paths.",
+          "Operates inside host system memory directly, using minimal server resources.",
+          "Handles large production content loads easily without needing standalone server instances."
+        ],
+        links: [
+          { text: "SQLite Architecture Traits", url: "https://www.sqlite.org/arch.html" },
+          { text: "Production Scale Guide", url: "https://www.sqlite.org/whentouse.html" },
+          { text: "WAL Mode Optimization", url: "https://www.sqlite.org/wal.html" }
+        ]
+      },
+      "astro-collections": {
+        title: "Astro Content Collections",
+        subtitle: "Git-Driven Raw Document Manager",
+        url: "https://docs.astro.build/en/guides/content-collections/",
+        tags: ["Git Version Tracking", "Zod Object Models", "Zero Runtime Load"],
+        desc: "Astro's built-in content collections process Markdown and MDX files directly during your site compilation phase. This converts text files into pre-built layouts <span class='accent-text font-semibold'>without querying active databases at runtime</span>, which removes external server dependencies.",
+        points: [
+          "Secures your content structure using programmatic Zod schema validations.",
+          "Allows you to use interactive Svelte components directly within text files.",
+          "Maintains absolute performance stability during massive global traffic surges."
+        ],
+        alternatives: "Decoupled web services can introduce API network delays and build failure points, which can slow down rapid page rendering loops.",
+        facts: [
+          "Stores content updates inside standard Git code commits for clear version tracking.",
+          "Generates automatic code types to ensure content parameters sync with display layouts.",
+          "Eliminates database server queries during traffic spikes."
+        ],
+        links: [
+          { text: "Content Collection Guide", url: "https://docs.astro.build/en/guides/content-collections/" },
+          { text: "Zod Schema Validation", url: "https://docs.astro.build/en/guides/content-collections/#defining-a-collection-schema" },
+          { text: "MDX Component Integration", url: "https://docs.astro.build/en/guides/integrations-guide/mdx/" }
+        ]
+      },
+      directus: {
+        title: "Directus",
+        subtitle: "Data Reflective Custom Database Dashboard",
+        url: "https://directus.io",
+        tags: ["Schema Reflection", "Instant API Engine", "Open Source Server"],
+        desc: "Directus layers a clean, visual administration dashboard <span class='accent-text font-semibold'>directly on top of your live SQLite engine</span> without changing your database tables into a proprietary structure. This gives content editors an easy visual workspace while keeping your data layout clean.",
+        points: [
+          "Instantly generates documented, secure REST and GraphQL endpoints.",
+          "Provides content editors with a friendly, intuitive workspace dashboard.",
+          "Keeps database configurations clean and accessible for standard code tools."
+        ],
+        alternatives: "SaaS content platforms like <strong>Contentful</strong> or <strong>Sanity</strong> require external API requests, adding network delay and recurring subscription costs.",
+        facts: [
+          "Connects to raw database tables directly, without requiring restrictive data migration steps.",
+          "Includes automated media optimization tools to speed up asset deliveries.",
+          "Provides precise access control settings to manage editing privileges safely."
+        ],
+        links: [
+          { text: "Directus System Overview", url: "https://docs.directus.io" },
+          { text: "Database Introspection Spec", url: "https://docs.directus.io/concepts/introduction/" },
+          { text: "API Routing Matrix", url: "https://docs.directus.io/reference/api/" }
+        ]
+      },
+      "tina-cms": {
+        title: "TinaCMS",
+        subtitle: "Visual Real-Time Markdown Interface",
+        url: "https://tina.io",
+        tags: ["Visual Page Previews", "Git Commit Actions", "No Database Nodes"],
+        desc: "TinaCMS gives non-technical content creators a visual, click-to-edit sidebar workspace. It saves edits by <span class='accent-text font-semibold'>committing Markdown updates directly back to your Git repository</span>, which triggers your site build pipelines automatically.",
+        points: [
+          "Combines live page previews with simple markdown editing tools.",
+          "Triggers automated build pipelines instantly upon saving changes.",
+          "Removes live production database maintenance needs for text updates."
+        ],
+        alternatives: "Old-school web dashboards require heavy database configurations to manage text files, adding maintenance overhead and potential security vulnerabilities.",
+        facts: [
+          "Integrates editing tools directly into your active page layout views.",
+          "Saves text modifications as clean Markdown code commits inside your repository branch.",
+          "Bypasses database maintenance chores, reducing platform security risks."
+        ],
+        links: [
+          { text: "TinaCMS Architecture Manual", url: "https://tina.io/docs/" },
+          { text: "Visual Context Setup", url: "https://tina.io/docs/contextual-editing/" },
+          { text: "Git Storage Core Specs", url: "https://tina.io/docs/reference/search/" }
+        ]
+      },
+      "payload-cms": {
+        title: "Payload CMS",
+        subtitle: "Code-First TypeScript Content Framework",
+        url: "https://payloadcms.com",
+        tags: ["Code-First Schemas", "Drizzle SQL Mapper", "Unified TypeScript Engine"],
+        desc: "Payload provides an adaptable, code-first content model built completely with TypeScript that links natively with SQLite tables via Drizzle ORM handlers. Because definitions are configured <span class='accent-text font-semibold'>exclusively through standard script patterns</span>, schema properties align perfectly across your codebase. This delivers structured data payloads to frontend components quickly, ensuring long-term code consistency.",
+        points: [
+          "No visual query builders needed, keeping control entirely inside clean source code configurations.",
+          "Deep integration with localized SQLite engines for minimal application overhead.",
+          "Extremely responsive React-based management interface provided natively."
+        ],
+        alternatives: "Standard headless systems use graphic dashboard tools to build data relationships, which can cause code inconsistencies during production deployments.",
+        facts: [
+          "Keeps data schemas securely defined within standard code files.",
+          "Generates automatic code types to ensure backend changes match frontend structures.",
+          "Runs directly inside your application instance to minimize server memory use."
+        ],
+        links: [
+          { text: "Payload Tech Specs", url: "https://payloadcms.com/docs/getting-started/what-is-payload" },
+          { text: "Drizzle Core Bindings", url: "https://payloadcms.com/docs/database/sqlite" },
+          { text: "TypeScript Generation Paths", url: "https://payloadcms.com/docs/typescript/generating-types" }
+        ]
+      },
+      wordpress: {
+        title: "WordPress",
+        subtitle: "Monolithic Traditional Ecosystem Platform",
+        url: "https://wordpress.org",
+        tags: ["PHP Execution", "MySQL Traditional Core", "Extensive Plugin Base"],
+        desc: "WordPress acts as a traditional, comprehensive content management system, running on a <span class='accent-text font-semibold'>unified PHP environment connected to a separate MySQL database instance</span>. While it provides non-technical users with a massive library of plugins, its monolithic design requires careful optimization to maintain modern performance standards.",
+        points: [
+          "Provides non-technical users with a large, accessible plugin ecosystem.",
+          "Includes mature, well-tested user role management and content scheduling tools.",
+          "Integrates dashboard controls and themes within a single software installation."
+        ],
+        alternatives: "Modern headless options separate database structures from display layers, which can provide faster rendering speeds and better platform security.",
+        facts: [
+          "Powers a large portion of global websites using its traditional publishing model.",
+          "Requires third-party optimization tools to match the speed of modern static frameworks.",
+          "Needs consistent security updates to protect its plugin files from automated web threats."
+        ],
+        links: [
+          { text: "WordPress Core Specifications", url: "https://developer.wordpress.org/" },
+          { text: "REST API Integration Guide", url: "https://developer.wordpress.org/rest-api/" },
+          { text: "Database Optimization Reference", url: "https://codex.wordpress.org/WordPress_Optimization" }
+        ]
+      }
+    };
+
+    function showDetails(key) {
+      const data = stackData[key];
+      if (!data) return;
+
+      // Render updated template inside Right Inspector Panel with expanded text sizes for clarity
+      const html = `
+        <div class="space-y-6">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <h3 class="text-2xl font-black tracking-tight text-white">${data.title}</h3>
+              <a href="${data.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold uppercase tracking-wider accent-text hover:underline shrink-0">
+                Official Site &rarr;
+              </a>
+            </div>
+            <p class="text-sm font-semibold text-gray-400 italic mb-3">${data.subtitle}</p>
+            
+            <div class="flex flex-wrap gap-1.5">
+              ${data.tags.map(t => `<span class="px-2.5 py-0.5 rounded text-xs font-bold bg-gray-900 border border-gray-800 text-gray-300">${t}</span>`).join('')}
+            </div>
+          </div>
+
+          <div>
+            <h5 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1.5">Architectural Abstract</h5>
+            <p class="text-base text-gray-300 leading-relaxed">${data.desc}</p>
+          </div>
+          
+          <div>
+            <h5 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1.5">Key Performance Benefits</h5>
+            <ul class="list-disc pl-5 text-base text-gray-400 space-y-1">
+              ${data.points.map(p => `<li>${p}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div>
+            <h5 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1.5">Verified Operational Facts</h5>
+            <ul class="list-none space-y-2">
+              ${data.facts.map(f => `
+                <li class="text-base text-gray-300 flex items-start gap-2">
+                  <span class="text-[hsl(160,100%,74.9%)] text-xs mt-1">■</span>
+                  <span>${f}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+
+          <div>
+            <h5 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Technical Engineering Links</h5>
+            <div class="grid grid-cols-1 gap-2">
+              ${data.links.map(l => `
+                <a href="${l.url}" target="_blank" rel="noopener noreferrer" class="p-3 rounded bg-gray-950 hover:bg-gray-900 border border-gray-900 hover:border-gray-800 text-sm text-gray-300 hover:text-[hsl(160,100%,74.9%)] transition-all block font-medium">
+                  ${l.text} <span class="float-right text-xs text-gray-500">&rarr;</span>
+                </a>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-6 pt-4 border-t border-gray-800/60">
+          <h5 class="text-xs font-bold text-red-400/80 uppercase tracking-widest mb-1.5">Architectural Conflict Resolution</h5>
+          <p class="text-sm text-gray-400 leading-relaxed">${data.alternatives}</p>
+        </div>
+      `;
+
+      document.getElementById('inspector-content').innerHTML = html;
+
+      // Update Navigation button state highlights
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('accent-text', 'bg-gray-900', 'font-semibold');
+        btn.classList.add('text-gray-400');
+      });
+      const activeNav = document.getElementById(`nav-${key}`);
+      if (activeNav) {
+        activeNav.classList.remove('text-gray-400');
+        activeNav.classList.add('accent-text', 'bg-gray-900', 'font-semibold');
+      }
+
+      // Update Main View Cards selection highlights
+      document.querySelectorAll('.stack-card').forEach(card => {
+        card.classList.remove('border-[hsl(160,100%,74.9%)]', 'bg-[#141419]');
+        card.classList.add('border-gray-800', 'bg-[#111114]/80');
+      });
+      const activeCard = document.getElementById(`card-${key}`);
+      if (activeCard) {
+        activeCard.classList.remove('border-gray-800', 'bg-[#111114]/80');
+        activeCard.classList.add('border-[hsl(160,100%,74.9%)]', 'bg-[#141419]');
+      }
+    }
+
+    // Preselect Astro on site initialization load
+    document.addEventListener('DOMContentLoaded', () => {
+      showDetails('astro');
+    });
+  </script>
+
+</body>
+</html>
