@@ -44,7 +44,7 @@ services:
     environment:
       SERVER_NAME: :80
 
-  # Soundwave-v2 MySQL DB
+  # Soundwave-v2 DB
   soundwave-v2-db:
     image: mariadb:10.4
     ports:
@@ -56,7 +56,7 @@ services:
       MARIADB_PASSWORD: soundwave
     volumes:
       - soundwave-v2-db-data:/var/lib/mysql
-      # Automatski uvozi tvoj SQL dump pri prvom pokretanju baze:
+      # Automatski uvezi SQL dump pri prvom pokretanju baze:
       - ./soundwave/v2/admin/db/soundwave_loc.sql:/docker-entrypoint-initdb.d/dump.sql
 
   # Verzija 3: React App (Statični produkcijski build)
@@ -66,6 +66,42 @@ services:
       - "8084:80"
     volumes:
       - ./soundwave/v3/dist:/usr/share/caddy
+      - ./soundwave/v3/Caddyfile:/etc/caddy/Caddyfile
+
+  # Soundwave-v3 DB
+  soundwave-v3-db:
+    image: mariadb:10.4.32
+    ports:
+      - "3307:3306" # Otvaramo port 3307 na računalu da se ne tuče s v2 bazom na 3306
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: soundwave_v3
+      MARIADB_USER: soundwave
+      MARIADB_PASSWORD: soundwave
+    volumes:
+      - soundwave-v3-db-data:/var/lib/mysql
+      # Automatski uvezi SQL dump pri prvom pokretanju baze:
+      - ./soundwave/v3/backend/db/soundwave.sql:/docker-entrypoint-initdb.d/dump.sql
+
+  # Express Backend za v3 verziju
+  soundwave-v3-backend:
+    build:
+      context: ./soundwave/v3
+      dockerfile: backend/Dockerfile
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./soundwave/v3/backend:/app
+      - /app/node_modules # Čuva pakete unutar kontejnera da ih lokalni folder ne pregazi
+    env_file:
+        - ./soundwave/v3/.env
+    environment:
+      PORT: 4000
+      DB_HOST: soundwave-v3-db
+      DB_USER: soundwave
+      DB_PASSWORD: soundwave
+      DB_NAME: soundwave_v3
 
 volumes:
   soundwave-v2-db-data:
+  soundwave-v3-db-data:
