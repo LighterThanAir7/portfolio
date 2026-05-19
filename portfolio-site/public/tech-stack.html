@@ -57,6 +57,7 @@
         <p class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-6 mb-2">Runtime & Server</p>
         <button onclick="showDetails('bun')" class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-900 text-left transition-colors nav-btn" id="nav-bun">Bun</button>
         <button onclick="showDetails('caddy')" class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-900 text-left transition-colors nav-btn" id="nav-caddy">Caddy</button>
+        <button onclick="showDetails('elysia')" class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-900 text-left transition-colors nav-btn" id="nav-elysia">Elysia</button>
         
         <p class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-6 mb-2">Data Layer</p>
         <button onclick="showDetails('prisma')" class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-900 text-left transition-colors nav-btn" id="nav-prisma">Prisma ORM</button>
@@ -123,6 +124,16 @@
                 <h3 class="text-xl font-bold text-white group-hover:text-[hsl(160,100%,74.9%)] transition-colors">Caddy</h3>
               </div>
               <span class="px-2 py-0.5 rounded text-xs font-bold bg-gray-900 accent-text border accent-border">Auto-TLS Proxy</span>
+            </div>
+          </div>
+
+          <div onclick="showDetails('elysia')" id="card-elysia" class="bg-[#111114]/80 backdrop-blur-sm p-5 rounded-xl border border-gray-800 cursor-pointer transition-all hover:border-gray-700/80 stack-card group">
+            <div class="flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img src="https://elysiajs.com/assets/icon.png" alt="Elysia Logo" class="w-8 h-8 object-contain rounded bg-zinc-900 p-0.5">
+                <h3 class="text-xl font-bold text-white group-hover:text-[hsl(160,100%,74.9%)] transition-colors">Elysia</h3>
+              </div>
+              <span class="px-2 py-0.5 rounded text-xs font-bold bg-gray-900 accent-text border accent-border">Bun-Native API</span>
             </div>
           </div>
         </div>
@@ -415,6 +426,29 @@
           { text: "Caddyfile Quickstart", url: "https://caddyserver.com/docs/caddyfile" },
           { text: "Automatic HTTPS Spec", url: "https://caddyserver.com/docs/automatic-https" },
           { text: "Proxy Optimization Profiles", url: "https://caddyserver.com/docs/modules/http.handlers.reverse_proxy" }
+        ]
+      },
+      elysia: {
+        title: "Elysia",
+        subtitle: "High-Performance Bun Web Framework",
+        url: "https://elysiajs.com",
+        tags: ["Bun-Native", "JIT Validation", "Type-Safe API"],
+        desc: "Elysia is an ergonomic, high-performance web framework built specifically for the Bun runtime. It leverages <span class='accent-text font-semibold'>Just-In-Time (JIT) compilation for schema validation</span>, providing end-to-end type safety that rivals the speed of Go or Rust while maintaining a simple, developer-friendly API.",
+        points: [
+          "Unmatched performance using Bun's low-level optimized HTTP APIs.",
+          "First-class type inference with support for TypeBox, Zod, and ArkType.",
+          "Automatic OpenAPI (Swagger) documentation generation."
+        ],
+        alternatives: "Standard frameworks like <strong>Express</strong> or <strong>Fastify</strong> are built for Node.js, which creates unnecessary overhead when running in the modern, high-speed Bun environment.",
+        facts: [
+          "Compiles API schemas into highly efficient, type-safe execution paths.",
+          "Includes Eden Treaty for seamless end-to-end type safety between backend and frontend.",
+          "Features a modular plugin ecosystem for JWT, CORS, and logging without performance trade-offs."
+        ],
+        links: [
+          { text: "Elysia Documentation", url: "https://elysiajs.com" },
+          { text: "Performance Benchmarks", url: "https://elysiajs.com/essential/benchmarks.html" },
+          { text: "Plugin Registry", url: "https://elysiajs.com/plugins/" }
         ]
       },
       prisma: {
