@@ -60,13 +60,29 @@ services:
       - ./soundwave/v2/admin/db/soundwave_loc.sql:/docker-entrypoint-initdb.d/dump.sql
 
   # Verzija 3: React App (Statični produkcijski build)
+  # --- FRONTEND SERVICE (TOGGLE BETWEEN DEV AND PROD) ---
+
+  # PROD ENVIRONMENT: Caddy (Comment out this entire block when developing)
+  # soundwave-v3:
+  #   image: caddy:alpine
+  #   ports:
+  #     - "8084:80"
+  #   volumes:
+  #     - ./soundwave/v3/dist:/usr/share/caddy
+  #     - ./soundwave/v3/Caddyfile:/etc/caddy/Caddyfile
+
+  # DEV ENVIRONMENT: Vite Dev Server (Uncomment this block for development)
   soundwave-v3:
-    image: caddy:alpine
+    build:
+      context: ./soundwave/v3
+      dockerfile: backend/Dockerfile # Reuses your node image context or change if you have a separate frontend Dockerfile
     ports:
-      - "8084:80"
+      - "5173:5173" # Vite dev server port
     volumes:
-      - ./soundwave/v3/dist:/usr/share/caddy
-      - ./soundwave/v3/Caddyfile:/etc/caddy/Caddyfile
+      - ./soundwave/v3:/app # Mounts your source files (including index.html and src/)
+      - /app/node_modules   # Keeps container's dependencies separate from host
+    working_dir: /app
+    command: npm run dev -- --host # Forces Vite to accept connections outside the container
 
   # Soundwave-v3 DB
   soundwave-v3-db:
@@ -93,6 +109,7 @@ services:
     volumes:
       - ./soundwave/v3/backend:/app
       - /app/node_modules # Čuva pakete unutar kontejnera da ih lokalni folder ne pregazi
+      - soundwave-v3-media:/app/uploads
     env_file:
         - ./soundwave/v3/.env
     environment:
@@ -105,3 +122,4 @@ services:
 volumes:
   soundwave-v2-db-data:
   soundwave-v3-db-data:
+  soundwave-v3-media:
