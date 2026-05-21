@@ -109,7 +109,7 @@ services:
     volumes:
       - ./soundwave/v3/backend:/app
       - /app/node_modules # Čuva pakete unutar kontejnera da ih lokalni folder ne pregazi
-      - soundwave-v3-media:/app/uploads
+      - ./soundwave/v3/backend/uploads:/app/uploads
     env_file:
         - ./soundwave/v3/.env
     environment:
